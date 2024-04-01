@@ -1,9 +1,9 @@
-# Team Team Indigo
+# Team INDIGO
 
 ## Team Members
 
-- Nagarjunn Reddy Dudipala
-
+- Kavya Bojja
+-Nagarjun Reddy
 ## How to Initialize and Run the App
 
 ### Prerequisites
