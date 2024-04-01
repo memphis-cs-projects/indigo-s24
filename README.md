@@ -1,8 +1,8 @@
-# Team xxxx
+# Team Team Indigo
 
 ## Team Members
 
-- xxxx
+- Nagarjunn Reddy Dudipala
 
 ## How to Initialize and Run the App
 
