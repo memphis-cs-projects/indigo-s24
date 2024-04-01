@@ -3,7 +3,7 @@
 ## Team Members
 
 - Kavya Bojja
--Nagarjun Reddy
+- Nagarjun Reddy
 ## How to Initialize and Run the App
 
 ### Prerequisites
