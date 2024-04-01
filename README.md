@@ -2,7 +2,7 @@
 
 ## Team Members
 
-- xxxx
+- Kavya Bojja
 
 ## How to Initialize and Run the App
 
