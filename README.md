@@ -1,4 +1,4 @@
-# Team xxxx
+# Team INDIGO
 
 ## Team Members
 
