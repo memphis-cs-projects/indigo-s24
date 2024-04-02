@@ -4,6 +4,7 @@
 
 - Kavya Bojja
 - Nagarjun Reddy
+- Sandeep Lakineni
 ## How to Initialize and Run the App
 
 ### Prerequisites
