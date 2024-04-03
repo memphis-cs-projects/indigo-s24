@@ -3,8 +3,9 @@
 ## Team Members
 
 - Kavya Bojja
-- Nagarjun Reddy
+- Nagarjun Reddy (nddipala@memphis.edu)
 - Sandeep Lakineni (slkineni@memphis.edu)
+- Shriya Akula
 ## How to Initialize and Run the App
 
 ### Prerequisites
