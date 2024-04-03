@@ -4,7 +4,7 @@
 
 - Kavya Bojja
 - Nagarjun Reddy
-- Sandeep Lakineni
+- Sandeep Lakineni (slkineni@memphis.edu)
 ## How to Initialize and Run the App
 
 ### Prerequisites
