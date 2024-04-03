@@ -5,7 +5,7 @@
 - Kavya Bojja
 - Nagarjun Reddy
 - Sandeep Lakineni
-- Shriya Akula
+- Shriya Akula (shriyarao900@gmail.com)
 ## How to Initialize and Run the App
 
 ### Prerequisites
