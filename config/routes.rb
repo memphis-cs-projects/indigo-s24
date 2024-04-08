@@ -1,12 +1,10 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  root to:'home#show'
-
-  # Devise routes for user sign-in, sign-up, sign-out, etc.
+  root 'home#show'
+  resources :cart, only: [:index, :create, :destroy]
+  resources :account, only: [:show, :update]
+  get 'orders', to: 'orders#index'
+  get 'nomad_connect', to: 'nomad_connect#index'
+  get 'shared_experiences', to: 'shared_experiences#index'
+  get 'settings', to: 'settings#index'
   devise_for :users
-
 end
