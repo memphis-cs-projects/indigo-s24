@@ -2,10 +2,17 @@
 
 ## Team Members
 
+<<<<<<< HEAD
+- Kavya Bojja
+- Nagarjun Reddy
+- Sandeep Lakineni
+- Shriya Akula (shriyarao900@gmail.com)
+=======
 - Kavya Bojja (kbojja@memphis.edu)
 - Nagarjun Reddy (nddipala@memphis.edu)
 - Sandeep Lakineni (slkineni@memphis.edu)
 - Shriya Akula
+>>>>>>> 86b6a48f674902d7a307f27e8d5cb30cf7fe3e04
 ## How to Initialize and Run the App
 
 ### Prerequisites
