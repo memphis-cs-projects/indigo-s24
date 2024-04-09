@@ -1,0 +1,28 @@
+<h1>Create Group</h1>
+
+<%= form_with(model: @group, url: groups_path, method: "post") do |form| %>
+  <div class="field">
+    <%= form.label :group_name %>
+    <%= form.text_field :group_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :group_size %>
+    <%= form.number_field :group_size %>
+  </div>
+
+  <div class="field">
+    <%= form.label :adventure_location %>
+    <%= form.text_field :adventure_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other_information %>
+    <%= form.text_area :other_information %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save" %>
+    <%= link_to "Cancel", root_path %>
+  </div>
+<% end %>

@@ -2,3 +2,17 @@
 <p>
   This is the Nomad Connect page.
 </p>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Group Actions</title>
+</head>
+<body>
+<li class="nav-item">
+<%= link_to 'Create Group', new_group_path, class: 'nav-link' %>
+</li>
+  <%= button_to "Join Group", join_group_path, method: :get %>
+  <%= button_to "View Group", view_group_path, method: :get %>
+</body>
+</html>
