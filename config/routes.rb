@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'home#show'
-  resources :cart, only: [:index, :create, :destroy]
+  resource :cart, only: [:index, :show]
+
   resources :account, only: [:show, :update]
+  resources :caravans, only: [:show]
   get 'orders', to: 'orders#index'
   get 'nomad_connect', to: 'nomad_connect#index'
   get 'shared_experiences', to: 'shared_experiences#index'
