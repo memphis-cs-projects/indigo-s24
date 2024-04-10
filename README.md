@@ -5,7 +5,8 @@
 - Kavya Bojja (kbojja@memphis.edu)
 - Nagarjun Reddy (nddipala@memphis.edu)
 - Sandeep Lakineni (slkineni@memphis.edu)
-- Shriya Akula
+- Shriya Akula  (sakula3@memphis.edu)
+
 ## How to Initialize and Run the App
 
 ### Prerequisites
