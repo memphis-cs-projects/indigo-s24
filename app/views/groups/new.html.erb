@@ -1,28 +1,91 @@
-<h1>Create Group</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Group</title>
+  <style>
+    /* Styling for the form */
+    .create-group-form {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .create-group-form h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333; /* Set heading color */
+    }
+    .create-group-form .field {
+      margin-bottom: 15px;
+    }
+    .create-group-form label {
+      display: block;
+      font-weight: bold;
+    }
+    .create-group-form input[type="text"],
+    .create-group-form input[type="number"],
+    .create-group-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .create-group-form textarea {
+      height: 100px;
+    }
+    .create-group-form .actions {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .create-group-form .actions button,
+    .create-group-form .actions a {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .create-group-form .actions button:hover,
+    .create-group-form .actions a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="create-group-form">
+    <h1>Create Group</h1>
 
-<%= form_with(model: @group, url: groups_path, method: "post") do |form| %>
-  <div class="field">
-    <%= form.label :group_name %>
-    <%= form.text_field :group_name %>
-  </div>
+    <%= form_with model: @group, url: groups_path, method: :post,data: { turbo: false} do |form| %>
+      <div class="field">
+        <%= form.label :group_name %>
+        <%= form.text_field :group_name, placeholder: "Enter group name" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :group_size %>
-    <%= form.number_field :group_size %>
-  </div>
+      <div class="field">
+        <%= form.label :group_size %>
+        <%= form.number_field :group_size, placeholder: "Enter group size" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :adventure_location %>
-    <%= form.text_field :adventure_location %>
-  </div>
+      <div class="field">
+        <%= form.label :adventure_location %>
+        <%= form.text_field :adventure_location, placeholder: "Enter adventure location" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :other_information %>
-    <%= form.text_area :other_information %>
-  </div>
+      <div class="field">
+        <%= form.label :other_information %>
+        <%= form.text_area :other_information, placeholder: "Enter other information" %>
+      </div>
 
-  <div class="actions">
-    <%= form.submit "Save" %>
-    <%= link_to "Cancel", root_path %>
+      <div class="actions">
+        <%= form.submit "Create" %>
+        <%= link_to "Cancel", nomad_connect_path %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</body>
+</html>

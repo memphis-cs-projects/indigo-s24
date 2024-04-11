@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_08_065035) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_11_041045) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_08_065035) do
     t.string "exterior_color"
     t.string "interior_theme"
     t.decimal "price", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "group_name"
+    t.integer "group_size"
+    t.string "adventure_location"
+    t.text "other_information"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

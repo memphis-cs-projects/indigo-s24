@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+
   def new
     @group = Group.new
     render :new
@@ -7,15 +8,17 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to @group, notice: 'Group was successfully created.'
+      # Handle successful save
     else
-      render :new
+      # Handle save failure
+      errors = @group.errors.full_messages
+      puts errors
     end
-  end
+  end  
 
   private
 
-  def group_params
-    params.require(:group).permit(:group_name, :group_size, :adventure_location, :other_information)
-  end
+def group_params
+  params.require(:group).permit(:group_name, :group_size, :adventure_location, :other_information)
+end
 end
