@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get 'nomad_connect/join', to: 'nomad_connect#join', as: 'join_group'
   get 'nomad_connect/view', to: 'nomad_connect#view', as: 'view_group'
 
-  get 'groups/new', to: 'groups#new', as: 'new_group'
+  resources :groups
+  #get 'groups/new', to: 'groups#new', as: 'new_group'
   post 'groups', to: 'groups#create'
 
   devise_for :users
