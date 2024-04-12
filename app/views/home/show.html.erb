@@ -34,16 +34,26 @@
       <% end %>
 
       <!-- Caravan listings -->
-      <div class="row">
+      <div class='container' >
+       <div class="row">
         <% if @caravans.any? %>
           <% @caravans.each do |caravan| %>
-            <div class="col-4">
-              <div class="card">
-                <%= image_tag caravan.image_url, class: 'card-img-top' %>
+            <div class="col-md-4">
+              <div class="card mb-4">
+              <% if caravan.image.attached? %>
+              <%= image_tag caravan.image, class: 'card-img-top' %>
+            <% end %>
                 <div class="card-body">
                   <h5 class="card-title"><%= caravan.name %></h5>
+                  <p class="card-text">
+                    Size: <%= caravan.size %> |
+                    Adventure: <%= caravan.adventure %> |
+                    Color: <%= caravan.exterior_color %> |
+                    Theme: <%= caravan.interior_theme %>
+              </p>
                   <p class="card-text">Price: <%= number_to_currency(caravan.price) %></p>
-                  <%= link_to 'Add to Cart', cart_path(caravan_id: caravan.id), class: 'btn btn-primary' %>
+                  <h4 class: 'btn btn-secondary'> View details </h4>
+                  <h4 class: 'btn btn-primary'> Add to cart </h4>
                 </div>
               </div>
             </div>
@@ -53,6 +63,7 @@
             <p>No caravans available.</p>
           </div>
         <% end %>
+       </div>
       </div>
 
       <!-- Pagination -->
