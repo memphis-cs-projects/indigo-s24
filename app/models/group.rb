@@ -12,9 +12,6 @@
 #
 class Group < ApplicationRecord
 
-    # Attributes
-  attr_accessor :group_name, :group_size, :adventure_location, :other_information
-
     validates :group_name, presence: true
     validates :group_size, presence: true, numericality: { only_integer: true }
     validates :adventure_location, presence: true

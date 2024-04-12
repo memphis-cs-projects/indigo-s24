@@ -62,22 +62,22 @@
 
     <%= form_with model: @group, url: groups_path, method: :post,data: { turbo: false} do |form| %>
       <div class="field">
-        <%= form.label :group_name %>
+        
         <%= form.text_field :group_name, placeholder: "Enter group name" %>
       </div>
 
       <div class="field">
-        <%= form.label :group_size %>
+        
         <%= form.number_field :group_size, placeholder: "Enter group size" %>
       </div>
 
       <div class="field">
-        <%= form.label :adventure_location %>
+        
         <%= form.text_field :adventure_location, placeholder: "Enter adventure location" %>
       </div>
 
       <div class="field">
-        <%= form.label :other_information %>
+        
         <%= form.text_area :other_information, placeholder: "Enter other information" %>
       </div>
 
