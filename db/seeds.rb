@@ -18,3 +18,38 @@ user2 = User.create!(
   email:    'bob@email.com',
   password: 'password'
 )
+
+#Caravans
+
+#Caravan1
+caravan1 = Caravan.create!(
+  name: 'Caravan1',
+  size: 'compact',
+  adventure: 'Mountains',
+  exterior_color: 'Sandy Taupe',
+  interior_theme: 'Modern minimalist',
+  price: 19999
+
+)
+
+#Caravan2
+caravan1 = Caravan.create!(
+  name: 'Caravan2',
+  size: 'Large',
+  adventure: 'Beach',
+  exterior_color: 'Ocean blue',
+  interior_theme: 'Rustic charm',
+  price: 25899
+
+)
+
+#Caravan3
+caravan1 = Caravan.create!(
+  name: 'Caravan3',
+  size: 'Medium',
+  adventure: 'Forest',
+  exterior_color: 'Sunset orange',
+  interior_theme: 'Tech charm',
+  price: 30899
+
+)
