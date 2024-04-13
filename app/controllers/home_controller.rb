@@ -23,4 +23,7 @@ class HomeController < ApplicationController
     caravans = caravans.order(price: params[:sort_by]) if params[:sort_by].present?
     caravans
   end
+
+  def index
+  end
 end
