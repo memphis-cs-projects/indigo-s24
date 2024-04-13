@@ -1,23 +1,25 @@
 <h1> Caravan Details </h1>
-
+<% if @caravan.image.attached? %>
+  <%= image_tag @caravan.image, class: "your-custom-class", alt: "Caravan Image" %>
+<% end %>
 <p>
- Name: <% @caravan.name %>
+ Name: <%= @caravan.name %>
  </p>
  <p>
- Size : <% @caravan.size %>
+ Size : <%= @caravan.size %>
  </p>
  <p>
- Adventure : <% @caravan.adventure %>
- </p>
-
- <p>
- Exterior Color : <% @caravan.exterior_color %>
+ Adventure : <%= @caravan.adventure %>
  </p>
 
  <p>
- Interior Theme : <% @caravan.interior_theme %>
+ Exterior Color : <%= @caravan.exterior_color %>
  </p>
 
  <p>
- Price : <% @caravan.price %>
+ Interior Theme : <%= @caravan.interior_theme %>
+ </p>
+
+ <p>
+ Price : <%= @caravan.price %>
  </p>
