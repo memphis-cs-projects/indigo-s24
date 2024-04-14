@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: carts
+#
+#  id           :bigint           not null, primary key
+#  shipping_fee :decimal(, )
+#  taxes        :decimal(, )
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :bigint           not null
+#
+# Indexes
+#
+#  index_carts_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
+
+one:
+  user: one
+  shipping_fee: 9.99
+  taxes: 9.99
+
+two:
+  user: two
+  shipping_fee: 9.99
+  taxes: 9.99
