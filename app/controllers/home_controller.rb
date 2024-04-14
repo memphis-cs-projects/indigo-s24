@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!
   def show
     # Fetch the caravans, sizes, adventures, exterior colors, and interior themes
     @caravans = Caravan.paginate(page: params[:page], per_page: 10)
@@ -22,5 +23,8 @@ class HomeController < ApplicationController
     caravans = caravans.where(interior_theme: params[:interior_theme]) if params[:interior_theme].present?
     caravans = caravans.order(price: params[:sort_by]) if params[:sort_by].present?
     caravans
+  end
+
+  def index
   end
 end
