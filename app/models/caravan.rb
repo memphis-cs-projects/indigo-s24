@@ -13,6 +13,8 @@
 #  updated_at     :datetime         not null
 #
 class Caravan < ApplicationRecord
+
+  has_many :cart_items, dependent: :destroy
   validates :name, presence: true
   validates :size, presence: true
   validates :adventure, presence: true
