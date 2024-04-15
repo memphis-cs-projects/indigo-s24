@@ -23,4 +23,10 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def admin?
+    # Define logic to check if the user is an admin
+    # For example, check if the user's email matches the admin email
+    email == 'admin@email.com'
+  end
 end
