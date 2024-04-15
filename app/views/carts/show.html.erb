@@ -15,11 +15,9 @@
     <% @cart_items.each do |item| %>
       <div class="col-md-4 mb-3">
         <div class="card">
-          <img src="<%= item.caravan.image.variant(resize: "100x100") %>" class="card-img-top" alt="<%= item.caravan.name %>">
-          <div class="card-body">
-            <h5 class="card-title"><%= item.caravan.name %></h5>
+        <%= image_tag item.caravan.image, class: "card-img-top", alt: item.caravan.name if item.caravan.image.attached? %>            <h5 class="card-title"><%= item.caravan.name %></h5>
 
-            <p class="card-text">Price: <%= number_to_currency(item.price) %></p>
+            <p class="card-text">Price: <%= number_to_currency(item.caravan.price) %></p>
             <%= button_to 'Delete', cart_item_path(item), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
           </div>
         </div>
