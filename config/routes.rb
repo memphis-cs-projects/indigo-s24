@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :account, only: [:show, :update]
   resources :caravans, only: [:show, :index]
   resources :cart_items, only: [:create, :update, :destroy]
+  resources :profiles
+  post 'profiles', to: 'profiles#create'
   get 'orders', to: 'orders#index'
   get 'nomad_connect', to: 'nomad_connect#index'
   get 'shared_experiences', to: 'shared_experiences#index'
@@ -12,8 +14,6 @@ Rails.application.routes.draw do
   get 'view_details', to: 'home#index', as: 'details'
   get 'nomad_connect/join', to: 'nomad_connect#join', as: 'join_group'
   get 'nomad_connect/view', to: 'nomad_connect#view', as: 'view_group'
-  get 'profiles', to: 'profiles#index'
-  post '/update', to: 'settings#update'
 
   resources :groups
   #get 'groups/new', to: 'groups#new', as: 'new_group'

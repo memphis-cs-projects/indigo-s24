@@ -1,13 +1,29 @@
 class ProfilesController < ApplicationController
   def index
-    @profiles = Profile.order(:name, :phone_number, :email)
-    render :index
+    @profiles = Profile.all
   end
 
-  def update
-    # Your update logic here
+  def new
+    @profile = Profile.new
+    render :new
+  end
 
-    flash[:success] = "Settings updated successfully"
-    redirect_to settings_path
+  def create
+    @profile = Profile.new(profile_params)
+    if @profile.save
+      redirect_to settings_path, notice: 'Successfully added'
+    else
+      render :new
+    end
+  end
+
+  def show
+    @profile = Profile.find(params[:id])
+  end
+
+  private
+
+  def profile_params
+    params.require(:profile).permit(:name, :phone_number, :email)
   end
 end
