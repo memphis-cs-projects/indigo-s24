@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: payments
+#
+#  id          :bigint           not null, primary key
+#  card_number :string
+#  cvv         :string
+#  expiry_date :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  card_number: MyString
+  cvv: MyString
+  expiry_date: MyString
+
+two:
+  card_number: MyString
+  cvv: MyString
+  expiry_date: MyString
