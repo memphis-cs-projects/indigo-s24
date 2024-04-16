@@ -1,5 +1,10 @@
 class SettingsController < ApplicationController
-  def index
-    # Implement the logic to fetch and display the user's settings
+  def profiles
+   @profiles = Profile.order(:name, :phone_number, :email)
+    render :profiles
+  end
+
+  def payments
+    # Your logic for the payments action goes here
   end
 end

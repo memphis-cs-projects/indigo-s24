@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Profile</title>
+</head>
+<body>
+    <h1>Update Profile</h1>
+    <%= form_with(model: @profile, url: profiles_path, method: :post) do |form| %>
+        <label for="name">Name:</label>
+        <%= form.text_field :name, id: "name" %><br><br>
+
+        <label for="phone">Phone:</label>
+        <%= form.text_field :phone_number, id: "phone" %><br><br>
+
+        <label for="email">Email:</label>
+        <%= form.text_field :email, id: "email" %><br><br>
+
+        <%= form.submit "Update Profile" %>
+    <% end %>
+
+    <%= link_to 'Back', settings_path, class: "button back-button" %>
+</body>
+</html>

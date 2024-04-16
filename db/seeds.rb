@@ -50,3 +50,12 @@ caravan1 = Caravan.create!(
 )
 
 #caravan1.image.attach(io: File.open(Rails.root.join('/home/kavya/workspace/kavya-project/app/assets/images/Forest.png')), filename: 'Forest.jpg')
+
+caravan_image_filenames = [
+  'Mountain.png', 'Ocean.png', 'Forest.png'
+]
+
+Caravan.all.each_with_index do |caravan, index|
+  image_filename = caravan_image_filenames[index % caravan_image_filenames.size]
+  caravan.image.attach(io: File.open(Rails.root.join("app/assets/images/#{image_filename}")), filename: image_filename)
+end
