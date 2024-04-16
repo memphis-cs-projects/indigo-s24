@@ -1,4 +1,5 @@
 class NomadConnectController < ApplicationController
+  before_action :authenticate_user!
   def index
     # This action renders the index view
   end

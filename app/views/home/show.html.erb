@@ -1,28 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3">
       <!-- Filters -->
       <%= form_tag root_path, method: :get do %>
         <div class="form-group">
           <%= label_tag :size %>
-          <%= select_tag :size, options_for_select(@sizes, params[:size]), class: 'form-control' %>
+          <%= select_tag :size, options_for_select([['None', nil]] + @sizes.map {|s| [s, s]}, params[:size]), class: 'form-select' %>
         </div>
         <div class="form-group">
           <%= label_tag :adventure %>
-          <%= select_tag :adventure, options_for_select(@adventures, params[:adventure]), class: 'form-control' %>
+          <%= select_tag :adventure, options_for_select([['None', nil]] + @adventures.map {|a| [a, a]}, params[:adventure]), class: 'form-select' %>
         </div>
         <div class="form-group">
           <%= label_tag :exterior_color %>
-          <%= select_tag :exterior_color, options_for_select(@exterior_colors, params[:exterior_color]), class: 'form-control' %>
+          <%= select_tag :exterior_color, options_for_select([['None', nil]] + @exterior_colors.map {|c| [c, c]}, params[:exterior_color]), class: 'form-select' %>
         </div>
         <div class="form-group">
           <%= label_tag :interior_theme %>
-          <%= select_tag :interior_theme, options_for_select(@interior_themes.presence || [], params[:interior_theme]), class: 'form-control' %>
+          <%= select_tag :interior_theme, options_for_select([['None', nil]] + @interior_themes.map {|t| [t, t]}, params[:interior_theme]), class: 'form-select' %>
         </div>
         <div class="form-group">
           <%= label_tag :sort_by %>
-          <%= select_tag :sort_by, options_for_select([['Price: Low to High', 'price_asc'], ['Price: High to Low', 'price_desc'], ['Newest First', 'created_at_desc']], params[:sort_by]), class: 'form-control' %>
+          <%= select_tag :sort_by, options_for_select([['None', nil], ['Price: Low to High', 'price_asc'], ['Price: High to Low', 'price_desc'], ['Newest First', 'created_at_desc']], params[:sort_by]), class: 'form-select' %>
         </div>
+
         <%= submit_tag 'Apply Filters', class: 'btn btn-primary' %>
       <% end %>
     </div>
@@ -36,7 +37,7 @@
       <!-- Caravan listings -->
       <div class='container' >
        <div class="row">
-        <% if @caravans.any? %>
+        <% if @caravans.present? %>
           <% @caravans.each do |caravan| %>
             <div class="col-md-4">
               <div class="card mb-4">

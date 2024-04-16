@@ -1,0 +1,12 @@
+<!-- app/views/groups/join_group_path.html.erb -->
+<h1>Groups to Join</h1>
+
+<% @groups.each do |group| %>
+  <div>
+    <h2><%= group.group_name %></h2>
+    <p>Size: <%= group.group_size %></p>
+    <p>Location: <%= group.adventure_location %></p>
+    <p>Other Information: <%= group.other_information %></p>
+    <%= link_to "Join Group", view_group_path(group_id: group.id), method: :post, class: "btn btn-primary" %>
+  </div>
+<% end %>
