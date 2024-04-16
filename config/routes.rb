@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'view_details', to: 'home#index', as: 'details'
   get 'nomad_connect/join', to: 'nomad_connect#join', as: 'join_group'
   get 'nomad_connect/view', to: 'nomad_connect#view', as: 'view_group'
+  get 'profiles', to: 'profiles#index'
+  post '/update', to: 'settings#update'
 
   resources :groups
   #get 'groups/new', to: 'groups#new', as: 'new_group'

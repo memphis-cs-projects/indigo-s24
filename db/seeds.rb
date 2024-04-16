@@ -31,7 +31,7 @@ caravan1 = Caravan.create!(
   price: 19999
 
 )
-caravan1.image.attach(io: File.open(Rails.root.join('/home/kavya/workspace/kavya-project/app/assets/images/Mountain.png')), filename: 'Mountain.jpg')
+caravan1.image.attach(io: File.open(Rails.root.join('/home/shriyaakula/workspace/shriya-profiles/app/assets/images/Mountain.png')), filename: 'Mountain.jpg')
 
 #Caravan2
 caravan1 = Caravan.create!(
@@ -43,7 +43,7 @@ caravan1 = Caravan.create!(
   price: 25899
 
 )
-caravan1.image.attach(io: File.open(Rails.root.join('/home/kavya/workspace/kavya-project/app/assets/images/Ocean.png')), filename: 'Ocean.jpg')
+caravan1.image.attach(io: File.open(Rails.root.join('/home/shriyaakula/workspace/shriya-profiles/app/assets/images/Ocean.png')), filename: 'Ocean.jpg')
 
 #Caravan3
 caravan1 = Caravan.create!(
@@ -56,4 +56,4 @@ caravan1 = Caravan.create!(
 
 )
 
-caravan1.image.attach(io: File.open(Rails.root.join('/home/kavya/workspace/kavya-project/app/assets/images/Forest.png')), filename: 'Forest.jpg')
+caravan1.image.attach(io: File.open(Rails.root.join('/home/shriyaakula/workspace/shriya-profiles/app/assets/images/Forest.png')), filename: 'Forest.jpg')
