@@ -9,15 +9,8 @@
 
 # Users
 
-user1 = User.create!(
-  email:    'alice@email.com',
-  password: 'password'
-)
+User.create!(email: 'admin@email.com', password: 'admin123')
 
-user2 = User.create!(
-  email:    'bob@email.com',
-  password: 'password'
-)
 
 #Caravans
 
