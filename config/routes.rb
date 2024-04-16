@@ -6,12 +6,14 @@ Rails.application.routes.draw do
   resources :caravans, only: [:show, :index]
   resources :cart_items, only: [:create, :update, :destroy]
   resources :profiles
+  resources :payments
   post 'profiles', to: 'profiles#create'
+  post 'payments', to: 'payments#create'
   get 'orders', to: 'orders#index'
   get 'nomad_connect', to: 'nomad_connect#index'
   get 'shared_experiences', to: 'shared_experiences#index'
   get 'settings', to: 'settings#index'
-  
+
   # Routes for joining and viewing groups
   get 'nomad_connect/join', to: 'groups#join_group', as: 'join_group'
   get 'nomad_connect/view_group', to: 'groups#view_group', as: 'view_group'

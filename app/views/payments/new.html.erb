@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payments</title>
+</head>
+<body>
+    <h1>Profile</h1>
+    <%= form_with(model: @payment, url: payments_path, method: :post) do |form| %>
+        <label for="card_number">Card_number:</label>
+        <%= form.text_field :card_number, id: "card_number" %><br><br>
+
+        <label for="cvv">CVV:</label>
+        <%= form.text_field :cvv, id: "cvv" %><br><br>
+
+        <label for="expiry_date">Expiry_date:</label>
+        <%= form.text_field :expiry_date, id: "expiry_date" %><br><br>
+
+        <%= form.submit "Update Payments" %>
+    <% end %>
+
+    <%= link_to 'Back', settings_path, class: "button back-button" %>
+</body>
+</html>
