@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :account, only: [:show, :update]
   resources :caravans, only: [:show, :index]
   resources :cart_items, only: [:create, :update, :destroy]
+  resources :profiles
+  post 'profiles', to: 'profiles#create'
   get 'orders', to: 'orders#index'
   get 'nomad_connect', to: 'nomad_connect#index'
   get 'shared_experiences', to: 'shared_experiences#index'
