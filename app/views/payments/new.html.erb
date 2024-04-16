@@ -4,7 +4,7 @@
     <title>Payments</title>
 </head>
 <body>
-    <h1>Profile</h1>
+    <h1>Payments</h1>
     <%= form_with(model: @payment, url: payments_path, method: :post) do |form| %>
         <label for="card_number">Card_number:</label>
         <%= form.text_field :card_number, id: "card_number" %><br><br>

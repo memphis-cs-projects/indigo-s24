@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root 'home#show'
+  namespace :admin do
+    get '/', to: 'admin#index', as: 'dashboard'
+    get 'manage_listings', to: 'admin#manage_listings', as: 'manage_listings'
+    get 'view_orders', to: 'admin#view_orders', as: 'view_orders'
+  end
   resource :cart, only: [:show]
 
   resources :account, only: [:show, :update]
