@@ -21,9 +21,23 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
+  def update
+    @profile = Profile.find(params[:id])
+    if @profile.update(profile_params)
+      flash[:success] = "Profile updated successfully"
+      redirect_to @profile
+    else
+      flash[:error] = "Failed to update profile"
+      render :edit
+    end
+  rescue StandardError => e
+    flash[:error] = "An error occurred: #{e.message}"
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def profile_params
-    params.require(:profile).permit(:name, :phone_number, :email)
+    params.require(:profile).permit(:name, :phone_number, :email, :address)
   end
 end

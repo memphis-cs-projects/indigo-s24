@@ -103,6 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_16_035336) do
     t.string "name"
     t.string "phone_number"
     t.string "email"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
