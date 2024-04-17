@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'view_orders', to: 'admin#view_orders', as: 'view_orders'
   end
   resource :cart, only: [:show]
-
+  resources :orders, only: [:show, :create, :new]
   resources :account, only: [:show, :update]
   resources :caravans, only: [:show, :index]
   resources :cart_items, only: [:create, :update, :destroy]

@@ -1,0 +1,19 @@
+<!-- app/views/orders/new.html.erb -->
+<h1>Checkout</h1>
+
+<%= form_with model: @order, url: orders_path, method: :post do |form| %>
+  <div class="shipping-details">
+    <h2>Shipping Details</h2>
+    <!-- Add fields for shipping details like name, address, etc. -->
+  </div>
+
+  <div class="payment-details">
+    <h2>Payment Details</h2>
+    <!-- Add fields for payment details like credit card info, etc. -->
+    <!-- You might want to integrate with a payment service like Stripe here -->
+  </div>
+
+  <%= form.submit "Place Order", class: "btn btn-success" %>
+<% end %>
+
+<%= link_to 'Back', cart_path, class: "btn btn-secondary" %>
