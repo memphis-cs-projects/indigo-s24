@@ -2,13 +2,51 @@
 <html>
 <head>
     <title>Settings</title>
+    <style>
+        <body>
+         {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        li a:hover {
+            background-color: #f0f0f0;
+        }
+        .profile-link {
+            background-color: #28a745;
+            color: #fff;
+            border-color: #28a745;
+        }
+        .payment-link {
+            background-color: #28a745;
+            color: #fff;
+            border-color: #28a745;
+        }
+    </style>
 </head>
 <body>
     <ul>
-    <li><%= link_to 'Profile Details', new_profile_path %></li>
-    <li><%= link_to 'Payment Details', new_payment_path %></li>
+        <li><a class="profile-link" href="<%= new_profile_path %>">Profile Details</a></li>
+        <li><a class="payment-link" href="<%= new_payment_path %>">Payment Details</a></li>
     </ul>
-
-
 </body>
 </html>

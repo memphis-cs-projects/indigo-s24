@@ -1,6 +1,7 @@
 class SettingsController < ApplicationController
+  before_action :authenticate_user!
   def profiles
-   @profiles = Profile.order(:name, :phone_number, :email)
+   @profiles = Profile.order(:name, :phone_number, :email, :address)
     render :profiles
   end
 

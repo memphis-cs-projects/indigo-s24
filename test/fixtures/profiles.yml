@@ -3,6 +3,7 @@
 # Table name: profiles
 #
 #  id           :bigint           not null, primary key
+#  address      :string
 #  email        :string
 #  name         :string
 #  phone_number :string
