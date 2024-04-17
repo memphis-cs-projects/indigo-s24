@@ -11,5 +11,4 @@
 #  updated_at   :datetime         not null
 #
 class Profile < ApplicationRecord
-  validates :email, presence: true, uniqueness: true
 end
