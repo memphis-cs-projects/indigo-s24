@@ -56,7 +56,7 @@
                   <div class="btn-group" role="group" aria-label="Caravan Actions">
                     <td><%= link_to 'view details' , caravan_path(caravan), class: "btn btn-primary" %></td>
                     <h1> </h1>
-                    <td><%= button_to 'Add to Cart' , cart_items_path, params: {caravan_id: caravan.id}, method: :post, class: "btn btn-primary" %></td>
+                    <td><%= button_to 'Add to Cart' , cart_items_path, params: {caravan_id: caravan.id}, method: :post,remote: true, class: "btn btn-primary" %></td>
                   </div>
                 </div>
               </div>

@@ -3,8 +3,8 @@
 # Table name: carts
 #
 #  id           :bigint           not null, primary key
-#  shipping_fee :decimal(, )
-#  taxes        :decimal(, )
+#  shipping_fee :decimal(, )      default(5.99)
+#  taxes        :decimal(, )      default(3.99)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_id      :bigint           not null
