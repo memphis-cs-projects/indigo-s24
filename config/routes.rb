@@ -5,8 +5,10 @@ Rails.application.routes.draw do
     get 'manage_listings', to: 'admin#manage_listings', as: 'manage_listings'
     get 'view_orders', to: 'admin#view_orders', as: 'view_orders'
   end
-  resource :cart, only: [:show]
-
+  resource :cart, only: [:show] do
+    post 'add_item', on: :member
+  end
+  resources :orders, only: [:show, :create, :new]
   resources :account, only: [:show, :update]
   resources :caravans, only: [:show, :index]
   resources :cart_items, only: [:create, :update, :destroy]
