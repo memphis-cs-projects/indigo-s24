@@ -30,3 +30,15 @@ main {
 .alert-dismissible {
   padding-left: $alert-dismissible-padding-r;
 }
+/* Add this CSS to your stylesheet */
+/* Add this CSS to your stylesheet */
+footer {
+  background-color: #333; /* Change the background color to a dark color, like black */
+  color: #fff; /* Change the text color to white for better visibility */
+  padding: 20px 0; /* Add padding to create separation */
+  margin-top: 20px; /* Add margin to push the footer away from the main content */
+}
+
+main {
+  margin-bottom: 20px; /* Add margin to create separation between main content and footer */
+}
