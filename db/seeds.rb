@@ -59,12 +59,3 @@ Caravan.all.each_with_index do |caravan, index|
   image_filename = caravan_image_filenames[index % caravan_image_filenames.size]
   caravan.image.attach(io: File.open(Rails.root.join("app/assets/images/#{image_filename}")), filename: image_filename)
 end
-
-
-create_table "profiles", force: :cascade do |t|
-  t.string "name"
-  t.string "phone_number"
-  t.string "email", unique: true
-  t.string "address"
-
-end

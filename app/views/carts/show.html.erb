@@ -1,9 +1,9 @@
 <h1> Items in cart </h1>
 
-<% if @cart_items.any? %>
+<% if @cart.cart_items.any? %>
   <div class="container mt-3">
     <div class="row">
-      <% @cart_items.each do |item| %>
+      <% @cart.cart_items.each do |item| %>
         <div class="col-md-4 mb-3">
           <div class="card">
             <% if item.caravan.image.attached? %>
@@ -11,13 +11,25 @@
             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= item.caravan.name %></h5>
+              <p> Quantity: <%= item.quantity %></p>
               <p class="card-text">Price: <%= number_to_currency(item.caravan.price) %></p>
+              <p>Subtotal: <%= number_to_currency(item.total_price) %></p>
               <%= button_to 'Delete', cart_item_path(item), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
               <%= link_to 'View Details', caravan_path(item.caravan), class: "btn btn-primary" %>
             </div>
           </div>
         </div>
       <% end %>
+    </div>
+    <div class="row">
+      <div class="col-12 mt-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Total Cost (Including shipping charges and taxes)</h5>
+            <p class="card-text"><%= number_to_currency(@cart.total_cost) %></p>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col">

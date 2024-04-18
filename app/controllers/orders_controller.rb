@@ -6,26 +6,38 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @cart = current_cart
-    # Here you'll include the logic to compile the order summary
-    # You might also want to authenticate the user before proceeding
+    @profile = current_user.profile || current_user.build_profile
   end
 
   def create
-    # Logic to create an order
-    @order = Order.new(order_params)
-    @order.cart = current_cart
+    @order = current_user.orders.build(order_params)
 
-    if @order.save
-      # Handle payment processing and finalize order here
-      # ...
-      redirect_to some_path, notice: 'Thank you for your order.'
-    else
-      render :new
+    ActiveRecord::Base.transaction do
+      @order.total_price = current_cart.total_cost
+
+      # Copy the items from the cart to the order
+      current_cart.cart_items.each do |cart_item|
+        @order.order_items.build(product: cart_item.product, quantity: cart_item.quantity, price: cart_item.price)
+      end
+
+      if @order.save
+        # Handle payment processing and finalize order here
+        # ...
+        current_cart.clear
+
+        redirect_to root_path, notice: 'Thank you for your order.'
+      else
+        render :new
+      end
     end
+  rescue ActiveRecord::RecordInvalid => e
+    # If something goes wrong, handle the error
+    flash.now[:alert] = "There was a problem with your order."
+    render :new
   end
 
   def order_params
-    params.require(:order).permit(:shipping_details, :payment_details)
+    params.require(:order).permit(:total_price, :status, profile_attributes: [:name, :address, :email, :phone_number])
   end
 
 end

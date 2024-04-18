@@ -20,4 +20,5 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_one :payment
+  #accepts_nested_attributes_for :profile
 end
