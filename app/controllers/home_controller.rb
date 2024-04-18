@@ -24,7 +24,9 @@ class HomeController < ApplicationController
     caravans = caravans.where(adventure: params[:adventure]) if params[:adventure].present?
     caravans = caravans.where(exterior_color: params[:exterior_color]) if params[:exterior_color].present?
     caravans = caravans.where(interior_theme: params[:interior_theme]) if params[:interior_theme].present?
-    caravans = caravans.order(price: params[:sort_by]) if params[:sort_by].present?
+    if params[:sort_by].present? && ["asc", "desc", "ASC", "DESC"].include?(params[:sort_by])
+      caravans = caravans.order(price: params[:sort_by])
+    end
 
     # Search across multiple fields
     if params[:search].present?
