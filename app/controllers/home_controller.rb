@@ -2,18 +2,21 @@ class HomeController < ApplicationController
   # before_action :authenticate_user! # Uncomment if authentication is required
 
   def show
-    # Fetch the caravans, sizes, adventures, exterior colors, and interior themes
-    @caravans = Caravan.paginate(page: params[:page], per_page: 10)
-    @sizes = Caravan.pluck(:size).uniq
-    @adventures = Caravan.pluck(:adventure).uniq
-    @exterior_colors = Caravan.pluck(:exterior_color).uniq
-    @interior_themes = Caravan.pluck(:interior_theme).uniq || []
+    # Start with a base scope and then apply ordering and pagination
+    base_scope = Caravan.all
+    ordered_scope = base_scope.order(created_at: :desc)
+    paginated_caravans = ordered_scope.paginate(page: params[:page], per_page: 10)
 
     # Apply filters
-    @caravans = apply_filters(@caravans)
+    @caravans = apply_filters(paginated_caravans)
+
+    @sizes = base_scope.pluck(:size).uniq
+    @adventures = base_scope.pluck(:adventure).uniq
+    @exterior_colors = base_scope.pluck(:exterior_color).uniq
+    @interior_themes = base_scope.pluck(:interior_theme).uniq
 
     if @caravans.empty?
-      flash[:notice] = 'No caravans available.'
+      flash.now[:notice] = 'No caravans available.' # Use flash.now to avoid persisting the notice
     end
   end
 
