@@ -43,6 +43,8 @@
               <div class="card mb-4">
               <% if caravan.image.attached? %>
               <%= image_tag caravan.image, class: 'card-img-top' %>
+              <% else %>
+              <%= image_tag 'placeholder.png', class: 'card-img-top' %>
             <% end %>
                 <div class="card-body">
                   <h5 class="card-title"><%= caravan.name %></h5>

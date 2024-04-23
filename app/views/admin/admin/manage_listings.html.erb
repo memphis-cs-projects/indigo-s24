@@ -1,2 +1,43 @@
 <h1>Manage Listings</h1>
 <!-- Your manage listings content here -->
+<div class='container' >
+       <div class="row">
+        <% if @caravans.present? %>
+          <% @caravans.each do |caravan| %>
+            <div class="col-md-4">
+              <div class="card mb-4">
+              <% if caravan.image.attached? %>
+              <%= image_tag caravan.image, class: 'card-img-top' %>
+              <% else %>
+              <%= image_tag 'placeholder.png', class: 'card-img-top' %>
+            <% end %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= caravan.name %></h5>
+                  <p class="card-text">
+                    Size: <%= caravan.size %> |
+                    Adventure: <%= caravan.adventure %> |
+                    Color: <%= caravan.exterior_color %> |
+                    Theme: <%= caravan.interior_theme %>
+              </p>
+                  <p class="card-text">Price: <%= number_to_currency(caravan.price) %></p>
+                  <div class="btn-group" role="group" aria-label="Caravan Actions">
+                  <div>
+                  <td><p class: "btn btn-primary"> Edit </p> </td>
+                    <h1> </h1>
+                    <td><p class: "btn btn-primary"> Delete  </p></td>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% else %>
+          <div class="col-12">
+            <p>No caravans available.</p>
+          </div>
+        <% end %>
+       </div>
+      </div>
+
+      <p>
+      <%= link_to  'New', new_admin_caravan_path, class: 'btn btn-secondary' %> </p>
