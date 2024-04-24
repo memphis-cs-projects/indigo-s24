@@ -23,10 +23,17 @@ Rails.application.routes.draw do
   get 'settings', to: 'settings#index'
 
   # Routes for joining and viewing groups
-  get 'nomad_connect/join', to: 'groups#join_group', as: 'join_group'
+  # get 'nomad_connect/join', to: 'groups#join_group', as: 'join_group'
   get 'nomad_connect/view_group', to: 'groups#view_group', as: 'view_group'
-  post 'join_group', to: 'groups#join'
+  
   get 'view_group', to: 'groups#view_group'
+  get 'edit_group/:id', to: 'groups#edit', as: 'edit_group'
+  delete 'groups/:id', to: 'groups#destroy', as: 'delete_group'
+  get 'join_group/:group_id', to: 'groups#join', as: 'join_group'
+
+  get 'joined_groups', to: 'groups#joined_groups', as: 'joined_groups'
+
+
 
   get 'view_details', to: 'home#index', as: 'details'
   resources :groups

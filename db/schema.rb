@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_17_235552) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_24_080829) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_17_235552) do
     t.text "other_information"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "join_groups", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_join_groups_on_group_id"
+    t.index ["user_id"], name: "index_join_groups_on_user_id"
   end
 
   create_table "joined_groups", force: :cascade do |t|
@@ -136,6 +147,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_17_235552) do
   add_foreign_key "cart_items", "caravans"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "users"
+  add_foreign_key "groups", "users"
+  add_foreign_key "join_groups", "groups"
+  add_foreign_key "join_groups", "users"
   add_foreign_key "orders", "users"
   add_foreign_key "profiles", "users"
 end

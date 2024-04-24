@@ -1,9 +1,18 @@
-<!-- app/views/groups/view_group.html.erb -->
-<h1>Group Details</h1>
+<!-- app/views/groups/join_group_path.html.erb -->
+<h1>Groups to Join</h1>
 
-<div>
-  <h2><%= @group.group_name %></h2>
-  <p>Size: <%= @group.group_size %></p>
-  <p>Location: <%= @group.adventure_location %></p>
-  <p>Other Information: <%= @group.other_information %></p>
-</div>
+<% @groups.each do |group| %>
+  <div>
+    <h2><%= group.group_name %></h2>
+    <p>Size: <%= group.group_size %></p>
+    <p>Location: <%= group.adventure_location %></p>
+    <p>Other Information: <%= group.other_information %></p>
+    <% if current_user != group.user %>
+    <%= link_to "Join Group", join_group_path(group_id: group.id), class: "btn btn-primary" %>
+    <% end %>
+    <% if user_signed_in? && current_user == group.user %>
+      <%= link_to "Edit", edit_group_path(group), class: "btn btn-secondary" %>
+      <%= button_to "Delete Group", delete_group_path(group), method: :delete, data: { confirm: "Are you sure you want to delete this group?" }, class: "btn btn-danger" %>
+    <% end %>
+  </div>
+<% end %>
