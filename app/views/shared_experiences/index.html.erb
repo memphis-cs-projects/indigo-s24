@@ -1,4 +1,19 @@
+<!-- app/views/shared_experiences/index.html.erb -->
 <h1>Shared Experiences</h1>
-<p>
-  This is the Shared Experiences page.
-</p>
+
+<%= link_to 'New Shared Experience', new_shared_experience_path %>
+
+<% @shared_experiences.each do |shared_experience| %>
+  <div class="shared-experience">
+    <h2><%= shared_experience.title %></h2>
+    <p><%= shared_experience.description %></p>
+    <p>Posted by: <%= shared_experience.user.email %></p>
+    <h3>Comments:</h3>
+    <% shared_experience.comments.each do |comment| %>
+      <div class="comment">
+        <p><strong><%= comment.user.email %>:</strong> <%= comment.body %></p>
+      </div>
+    <% end %>
+    <%= render 'comments/form', shared_experience: shared_experience %>
+  </div>
+<% end %>

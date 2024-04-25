@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_17_235552) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_25_065517) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,6 +73,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_17_235552) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.bigint "shared_experience_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shared_experience_id"], name: "index_comments_on_shared_experience_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "group_name"
     t.integer "group_size"
@@ -119,6 +129,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_17_235552) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "shared_experiences", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shared_experiences_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -136,6 +155,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_17_235552) do
   add_foreign_key "cart_items", "caravans"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "users"
+  add_foreign_key "comments", "shared_experiences"
+  add_foreign_key "comments", "users"
   add_foreign_key "orders", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "shared_experiences", "users"
 end
