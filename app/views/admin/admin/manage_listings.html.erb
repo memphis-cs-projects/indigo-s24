@@ -22,9 +22,10 @@
                   <p class="card-text">Price: <%= number_to_currency(caravan.price) %></p>
                   <div class="btn-group" role="group" aria-label="Caravan Actions">
                   <div>
-                  <td><p class: "btn btn-primary"> Edit </p> </td>
+                  <td><%= link_to 'Edit', edit_admin_caravan_path(caravan), class: 'btn btn-primary' %>
+                  </td>
                     <h1> </h1>
-                    <td><p class: "btn btn-primary"> Delete  </p></td>
+                    <td><%= button_to 'Delete', admin_caravan_path(caravan), method: :delete, data: { confirm: 'Are you sure you want to delete this caravan?' }, class: 'btn btn-danger' %></td>
                     </div>
                   </div>
                 </div>

@@ -1,0 +1,18 @@
+<h1>Edit Caravan</h1>
+
+<%= bootstrap_form_with model: @caravan, url: admin_caravan_path(@caravan), method: :patch, local: true do |form| %>
+  <%= form.text_field :name %>
+  <%= form.text_field :size %>
+  <%= form.text_field :adventure %>
+  <%= form.text_field :exterior_color %>
+  <%= form.text_field :interior_theme %>
+  <%= form.number_field :price %>
+
+  <div class="form-actions">
+    <%= form.submit 'Update Caravan', class: 'btn btn-primary' %><br><br>
+  </div>
+<% end %>
+
+<p>
+  <%= link_to 'Back to Listings', admin_manage_listings_path, class: 'btn btn-secondary' %>
+</p>
