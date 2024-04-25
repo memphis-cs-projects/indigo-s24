@@ -1,19 +1,20 @@
 <!-- app/views/shared_experiences/index.html.erb -->
-<h1>Shared Experiences</h1>
-
-<%= link_to 'New Shared Experience', new_shared_experience_path %>
+<h1 style="font-size: 2.5rem; margin-bottom: 20px;">Shared Experiences</h1>
 
 <% @shared_experiences.each do |shared_experience| %>
-  <div class="shared-experience">
-    <h2><%= shared_experience.title %></h2>
-    <p><%= shared_experience.description %></p>
-    <p>Posted by: <%= shared_experience.user.email %></p>
-    <h3>Comments:</h3>
+  <div class="shared-experience" style="background-color: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+    <h2 style="color: #333; font-size: 1.8rem; margin-bottom: 10px;"><%= shared_experience.title %></h2>
+    <p style="color: #666; margin-bottom: 10px;"><%= shared_experience.description %></p>
+    <p style="color: #999; margin-bottom: 10px;">Posted by: <%= shared_experience.user.email %></p>
+    <h3 style="color: #333; font-size: 1.5rem; margin-bottom: 10px;">Comments:</h3>
     <% shared_experience.comments.each do |comment| %>
-      <div class="comment">
-        <p><strong><%= comment.user.email %>:</strong> <%= comment.body %></p>
+      <div class="comment" style="background-color: #f0f0f0; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+        <p style="color: #444; margin-bottom: 0;"><strong><%= comment.user.email %>:</strong> <%= comment.body %></p>
       </div>
     <% end %>
     <%= render 'comments/form', shared_experience: shared_experience %>
   </div>
 <% end %>
+
+<!-- New Shared Experience Button -->
+<%= link_to 'New Shared Experience', new_shared_experience_path, class: 'btn btn-primary', style: 'font-size: 1rem; margin-top: 20px;' %>
