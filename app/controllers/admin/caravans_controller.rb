@@ -20,6 +20,24 @@ module Admin
       end
     end
 
+    def edit
+      @caravan = Caravan.find(params[:id])
+    end
+
+    def update
+      @caravan = Caravan.find(params[:id])
+      if @caravan.update(caravan_params)
+        redirect_to admin_manage_listings_path, notice: 'Caravan was successfully updated.'
+      else
+        render :edit
+      end
+    end
+
+    def destroy
+      @caravan.destroy
+      redirect_to admin_manage_listings_path, notice: 'Caravan deleted successfully.'
+    end
+
     def set_caravan
       @caravan = Caravan.find(params[:id])
     end
