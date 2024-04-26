@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   get 'nomad_connect/view_group', to: 'groups#view_group', as: 'view_group'
   
   get 'view_group', to: 'groups#view_group'
-  get 'edit_group/:id', to: 'groups#edit', as: 'edit_group'
   delete 'groups/:id', to: 'groups#destroy', as: 'delete_group'
   get 'join_group/:group_id', to: 'groups#join', as: 'join_group'
 

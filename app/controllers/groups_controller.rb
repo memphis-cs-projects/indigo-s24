@@ -25,20 +25,7 @@ class GroupsController < ApplicationController
   def view_group
     @groups = Group.all # Fetch all groups
   end
-
-  def edit
-    @group = Group.find(params[:id])
-  end
-
-  def update
-    @group = Group.find(params[:id])
-    if @group.update(group_params)
-      redirect_to group_path(@group), notice: 'Group was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
+  
   def destroy
     @group = Group.find(params[:id]) # Retrieve the group by its ID
     @group.destroy if @group.present? # Check if the group exists before calling destroy
