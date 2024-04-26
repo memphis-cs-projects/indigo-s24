@@ -1,0 +1,5 @@
+<!-- app/views/comments/_form.html.erb -->
+<%= form_with(model: [shared_experience, Comment.new], url: shared_experience_comments_path(shared_experience)) do |form| %>
+  <%= form.text_area :body, placeholder: 'Add a comment...' %>
+  <%= form.submit 'Post Comment' %>
+<% end %>

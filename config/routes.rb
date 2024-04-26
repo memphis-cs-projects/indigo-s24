@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/destroy'
   root 'home#show'
   namespace :admin do
     resources :caravans, only: [:new, :create, :index, :show, :edit, :update, :destroy]
@@ -9,6 +11,11 @@ Rails.application.routes.draw do
   resource :cart, only: [:show] do
     post 'add_item', on: :member
   end
+
+resources :shared_experiences do
+  resources :comments, only: [:create, :destroy]
+end
+
   resources :orders, only: [:show, :create, :new]
   resources :account, only: [:show, :update]
   resources :caravans, only: [:show, :index]
