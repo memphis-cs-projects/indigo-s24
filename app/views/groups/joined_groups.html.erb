@@ -1,0 +1,16 @@
+<!-- app/views/groups/joined_groups.html.erb -->
+
+<h1>Your Joined Groups</h1>
+
+<% if current_user.joined_groups.present? %>
+  <% current_user.joined_groups.each do |joined_group| %>
+    <div>
+      <h2><%= joined_group.group.group_name %></h2>
+      <p>Size: <%= joined_group.group.group_size %></p>
+      <p>Location: <%= joined_group.group.adventure_location %></p>
+      <p>Other Information: <%= joined_group.group.other_information %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>You haven't joined any groups yet.</p>
+<% end %>
