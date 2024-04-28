@@ -1,1 +1,20 @@
-<h1>Group created</h1>
+
+<h1>Group Information</h1>
+
+
+<% if current_user.joined_groups.present? %>
+  <div class="group-cards-container">
+    <% current_user.joined_groups.each do |joined_group| %>
+      <% if joined_group.group.present? %>
+      <div class="group-card">
+        <h2><%= joined_group.group.group_name %></h2>
+        <p>Size: <%= joined_group.group.group_size %></p>
+      <p>Location: <%= joined_group.group.adventure_location %></p>
+      <p>Other Information: <%= joined_group.group.other_information %></p>
+      </div>
+    <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <p>You haven't joined any groups yet.</p>
+<% end %>
