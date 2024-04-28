@@ -1,0 +1,14 @@
+<h1>Group Chat: <%= @group.group_name %></h1>
+
+<div id="message-list">
+  <% @messages.each do |message| %>
+    <!-- Message display here, customize as needed -->
+    <%= render 'message', message: message %>
+  <% end %>
+</div>
+
+
+<%= form_with(model: [@group, @message], remote: true, html: { class: 'form-wrapper' }) do |form| %>
+  <%= form.text_field :content, class: 'text-field', placeholder: 'Type a message' %>
+  <%= form.submit "Send", class: 'send-button' %>
+<% end %>

@@ -1,0 +1,12 @@
+
+<% if @message.persisted? %>
+  // Append the new message to the message list
+  $("#messages").append("<%= j(render 'message', message: @message) %>");
+  // Scroll to the bottom of the message list
+  $("#messages").scrollTop($("#messages")[0].scrollHeight);
+  // Clear the message input field
+  $("#new_message")[0].reset();
+<% else %>
+  // Handle errors, perhaps show a message to the user
+  alert('Message could not be sent.');
+<% end %>
