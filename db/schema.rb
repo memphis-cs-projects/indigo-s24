@@ -181,11 +181,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_014050) do
   add_foreign_key "groups", "users"
   add_foreign_key "join_groups", "groups"
   add_foreign_key "join_groups", "users"
-<<<<<<< HEAD
-=======
   add_foreign_key "messages", "groups"
   add_foreign_key "messages", "users"
->>>>>>> 76eb0cf07de874966456f81b8e99ef584fde797f
   add_foreign_key "orders", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "shared_experiences", "users"
