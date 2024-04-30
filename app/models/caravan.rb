@@ -21,6 +21,7 @@ class Caravan < ApplicationRecord
   validates :exterior_color, presence: true
   validates :interior_theme, presence: true
   validates :price, presence: true, numericality: { greater_than: 0 }
-
+  has_many :order_items
+  has_many :orders, through: :order_items
   has_one_attached :image
 end

@@ -18,7 +18,7 @@ resources :shared_experiences do
   resources :comments, only: [:create, :destroy]
 end
 
-  resources :orders, only: [:show, :create, :new]
+  resources :orders, only: [:index, :show, :create, :new]
   resources :account, only: [:show, :update]
   resources :caravans, only: [:show, :index]
   resources :cart_items, only: [:create, :update, :destroy]
@@ -36,6 +36,7 @@ end
   get 'nomad_connect/view_group', to: 'groups#view_group', as: 'view_group'
 
   get 'view_group', to: 'groups#view_group'
+  get 'edit_group/:id', to: 'groups#edit', as: 'edit_group'
   delete 'groups/:id', to: 'groups#destroy', as: 'delete_group'
   get 'join_group/:group_id', to: 'groups#join', as: 'join_group'
 
