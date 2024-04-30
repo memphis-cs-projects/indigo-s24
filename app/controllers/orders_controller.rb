@@ -1,8 +1,6 @@
-# app/controllers/orders_controller.rb
-
 class OrdersController < ApplicationController
   def index
-    @orders = current_user.orders.includes(:caravans)
+    @orders = current_user.orders.includes(order_items: [:caravan])
   end
 
   def new
@@ -32,8 +30,6 @@ class OrdersController < ApplicationController
         render :new
       end
     end
-
-
   rescue ActiveRecord::RecordInvalid => e
     # If something goes wrong, handle the error
     flash.now[:alert] = "There was a problem with your order."
