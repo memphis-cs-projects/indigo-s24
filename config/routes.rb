@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'messages/index'
+  get 'messages/create'
   get 'comments/create'
   get 'comments/destroy'
   root 'home#show'
@@ -42,7 +44,9 @@ end
 
 
   get 'view_details', to: 'home#index', as: 'details'
-  resources :groups
+  resources :groups do
+    resources :messages, only: [:index, :create]
+  end
   #get 'groups/new', to: 'groups#new', as: 'new_group'
   post 'groups', to: 'groups#create'
 

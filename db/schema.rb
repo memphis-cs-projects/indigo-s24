@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_28_083229) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_28_014050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -112,6 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_083229) do
     t.index ["user_id"], name: "index_joined_groups_on_user_id"
   end
 
+<<<<<<< HEAD
   create_table "order_items", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.bigint "caravan_id", null: false
@@ -121,6 +122,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_083229) do
     t.datetime "updated_at", null: false
     t.index ["caravan_id"], name: "index_order_items_on_caravan_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
+=======
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_messages_on_group_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+>>>>>>> 76eb0cf07de874966456f81b8e99ef584fde797f
   end
 
   create_table "orders", force: :cascade do |t|
@@ -182,8 +193,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_083229) do
   add_foreign_key "groups", "users"
   add_foreign_key "join_groups", "groups"
   add_foreign_key "join_groups", "users"
+<<<<<<< HEAD
   add_foreign_key "order_items", "caravans"
   add_foreign_key "order_items", "orders"
+=======
+  add_foreign_key "messages", "groups"
+  add_foreign_key "messages", "users"
+>>>>>>> 76eb0cf07de874966456f81b8e99ef584fde797f
   add_foreign_key "orders", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "shared_experiences", "users"
