@@ -30,46 +30,52 @@
     <div class="col-9">
       <!-- Search -->
       <%= form_tag root_path, method: :get, class: 'form-inline mb-3' do %>
-        <%= text_field_tag :search, params[:search], class: 'form-control mr-2', placeholder: 'Search caravans...' %>
-        <%= submit_tag 'Search', class: 'btn btn-primary' %>
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], class: 'form-control mr-2', placeholder: 'Search caravans...' %>
+          <div class="input-group-append">
+            <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
+              <i class="bi bi-search"></i> <!-- Search symbol icon -->
+            <% end %>
+          </div>
+        </div>
       <% end %>
 
       <!-- Caravan listings -->
-      <div class='container' >
-       <div class="row">
-        <% if @caravans.present? %>
-          <% @caravans.each do |caravan| %>
-            <div class="col-md-4">
-              <div class="card mb-4">
-              <% if caravan.image.attached? %>
-              <%= image_tag caravan.image, class: 'card-img-top' %>
-              <% else %>
-              <%= image_tag 'placeholder.png', class: 'card-img-top' %>
-            <% end %>
-                <div class="card-body">
-                  <h5 class="card-title"><%= caravan.name %></h5>
-                  <p class="card-text">
-                    Size: <%= caravan.size %> |
-                    Adventure: <%= caravan.adventure %> |
-                    Color: <%= caravan.exterior_color %> |
-                    Theme: <%= caravan.interior_theme %>
-              </p>
-                  <p class="card-text">Price: <%= number_to_currency(caravan.price) %></p>
-                  <div class="btn-group" role="group" aria-label="Caravan Actions">
-                    <td><%= link_to 'view details' , caravan_path(caravan), class: "btn btn-primary" %></td>
-                    <h1> </h1>
-                    <td><%= button_to 'Add to Cart' , cart_items_path, params: {caravan_id: caravan.id}, method: :post,remote: true, class: "btn btn-primary" %></td>
+      <div class='container'>
+        <div class="row">
+          <% if @caravans.present? %>
+            <% @caravans.each do |caravan| %>
+              <div class="col-md-4">
+                <div class="card mb-4">
+                  <% if caravan.image.attached? %>
+                    <%= image_tag caravan.image, class: 'card-img-top' %>
+                  <% else %>
+                    <%= image_tag 'placeholder.png', class: 'card-img-top' %>
+                  <% end %>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= caravan.name %></h5>
+                    <p class="card-text">
+                      Size: <%= caravan.size %> |
+                      Adventure: <%= caravan.adventure %> |
+                      Color: <%= caravan.exterior_color %> |
+                      Theme: <%= caravan.interior_theme %>
+                    </p>
+                    <p class="card-text">Price: <%= number_to_currency(caravan.price) %></p>
+                    <div class="btn-group" role="group" aria-label="Caravan Actions">
+                      <td><%= link_to 'view details', caravan_path(caravan), class: "btn btn-primary" %></td>
+                      <h1> </h1>
+                      <td><%= button_to 'Add to Cart', cart_items_path, params: { caravan_id: caravan.id }, method: :post, remote: true, class: "btn btn-primary" %></td>
+                    </div>
                   </div>
                 </div>
               </div>
+            <% end %>
+          <% else %>
+            <div class="col-12">
+              <p>No caravans available.</p>
             </div>
           <% end %>
-        <% else %>
-          <div class="col-12">
-            <p>No caravans available.</p>
-          </div>
-        <% end %>
-       </div>
+        </div>
       </div>
 
       <!-- Pagination -->
