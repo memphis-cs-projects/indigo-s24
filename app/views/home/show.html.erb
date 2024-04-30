@@ -61,10 +61,9 @@
                       Theme: <%= caravan.interior_theme %>
                     </p>
                     <p class="card-text">Price: <%= number_to_currency(caravan.price) %></p>
-                    <div class="btn-group" role="group" aria-label="Caravan Actions">
-                      <td><%= link_to 'view details', caravan_path(caravan), class: "btn btn-primary" %></td>
-                      <h1> </h1>
-                      <td><%= button_to 'Add to Cart', cart_items_path, params: { caravan_id: caravan.id }, method: :post, remote: true, class: "btn btn-primary" %></td>
+                    <div class="btn-group-vertical" role="group" aria-label="Caravan Actions">
+                      <td><%= link_to 'View Details', caravan_path(caravan), class: "btn btn-primary btn-block mb-2" %></td>
+                      <td><%= button_to 'Add to Cart', cart_items_path, params: { caravan_id: caravan.id }, method: :post, remote: true, class: "btn btn-primary btn-block" %></td>
                     </div>
                   </div>
                 </div>
