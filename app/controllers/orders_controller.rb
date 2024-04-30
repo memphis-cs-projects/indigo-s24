@@ -1,6 +1,8 @@
+
+
 class OrdersController < ApplicationController
   def index
-    @orders = current_user.orders.includes(order_items: [:caravan])
+    @orders = current_user.orders.includes(order_items: :caravan)
   end
 
   def new
@@ -16,13 +18,15 @@ class OrdersController < ApplicationController
     ActiveRecord::Base.transaction do
       @order.total_price = current_user.cart.total_cost
 
-      # Copy the items from the cart to the order
       current_cart.cart_items.each do |cart_item|
         @order.order_items.build(caravan: cart_item.caravan, quantity: cart_item.quantity, price: cart_item.price)
       end
 
       if @order.save
-        # Clear the cart after successfully saving the order
+        # Copy the cart items to the order and then clear the cart
+        current_user.cart.cart_items.each do |cart_item|
+          @order.order_items.create(caravan: cart_item.caravan, quantity: cart_item.quantity, price: cart_item.price)
+        end
         current_user.cart.cart_items.destroy_all
 
         redirect_to orders_path, notice: 'Thank you for your order.'
@@ -30,8 +34,8 @@ class OrdersController < ApplicationController
         render :new
       end
     end
+
   rescue ActiveRecord::RecordInvalid => e
-    # If something goes wrong, handle the error
     flash.now[:alert] = "There was a problem with your order."
     render :new
   end
