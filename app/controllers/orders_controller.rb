@@ -1,5 +1,3 @@
-
-
 class OrdersController < ApplicationController
   def index
     @orders = current_user.orders.includes(order_items: :caravan)
@@ -23,12 +21,7 @@ class OrdersController < ApplicationController
       end
 
       if @order.save
-        # Copy the cart items to the order and then clear the cart
-        current_user.cart.cart_items.each do |cart_item|
-          @order.order_items.create(caravan: cart_item.caravan, quantity: cart_item.quantity, price: cart_item.price)
-        end
         current_user.cart.cart_items.destroy_all
-
         redirect_to orders_path, notice: 'Thank you for your order.'
       else
         render :new
@@ -39,6 +32,12 @@ class OrdersController < ApplicationController
     flash.now[:alert] = "There was a problem with your order."
     render :new
   end
+
+  #def destroy
+  #  @order = current_user.orders.find(params[:id])
+  # @order.destroy
+  # redirect_to orders_path, notice: 'Order was successfully deleted.'
+  #end
 
   private
 
