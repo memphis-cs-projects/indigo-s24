@@ -19,6 +19,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def index
+    @groups = Group.all
+  end
+
   def show
     @group = Group.find(params[:id])
   end
@@ -51,6 +55,7 @@ class GroupsController < ApplicationController
   # def set_group
   #   @group = Group.find(params[:id])
   # end
+
 
   def join
     group = Group.find(params[:group_id])

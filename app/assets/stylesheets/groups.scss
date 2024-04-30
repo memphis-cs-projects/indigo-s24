@@ -2,14 +2,15 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    justify-content: left;
   }
   
   .group-card {
-    background-color: rgba(100, 175, 236, 0.8); // White background with 80% opacity
+    background-color: rgba(218, 227, 234, 0.8); // White background with 80% opacity
     border: 1px solid rgba(0, 0, 0, 0.2); // Semi-transparent border
     border-radius: 8px;
     padding: 20px;
+    margin: 10px;
     width: 300px; // Adjust as necessary
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px); // Apply a blur effect to the background
@@ -61,7 +62,7 @@
   }
 
   #message-list {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(186, 234, 169, 0.7);
     padding: 10px;
     height: calc(100vh - 120px); /* Adjust the height as needed */
     overflow-y: auto;
