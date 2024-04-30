@@ -17,6 +17,8 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
+# app/models/cart.rb
+
 class Cart < ApplicationRecord
   belongs_to :user
   has_many :cart_items, dependent: :destroy
@@ -34,7 +36,7 @@ class Cart < ApplicationRecord
     current_item
   end
 
-  def total_cost
+  def total_cost  
     items_cost = cart_items.sum do |item|
       item.quantity * item.caravan.price
     end

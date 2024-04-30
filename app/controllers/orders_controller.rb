@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     @order.status = "Your order will be delivered in 10 days."
 
     ActiveRecord::Base.transaction do
-      @order.total_price = current_cart.total_cost
+      @order.total_price = current_user.cart.total_cost
 
       # Copy the items from the cart to the order
       current_cart.cart_items.each do |cart_item|
@@ -24,15 +24,16 @@ class OrdersController < ApplicationController
       end
 
       if @order.save
-        # Handle payment processing and finalize order here
-        # ...
-        current_cart.clear
+        # Clear the cart after successfully saving the order
+        current_user.cart.cart_items.destroy_all
 
         redirect_to orders_path, notice: 'Thank you for your order.'
       else
         render :new
       end
     end
+
+
   rescue ActiveRecord::RecordInvalid => e
     # If something goes wrong, handle the error
     flash.now[:alert] = "There was a problem with your order."
