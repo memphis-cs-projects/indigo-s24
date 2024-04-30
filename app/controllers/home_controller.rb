@@ -4,7 +4,9 @@ class HomeController < ApplicationController
   def show
     # Start with a base scope and then apply ordering and pagination
     base_scope = Caravan.all
-    ordered_scope = base_scope.order(created_at: :desc)
+    ordered_scope = base_scope.order(price: :asc) # Default sorting is ascending by price
+    ordered_scope = base_scope.order(price: :desc) if params[:sort_by] == 'price_desc'
+    ordered_scope = base_scope.order(created_at: :desc) if params[:sort_by] == 'created_at_desc'
     paginated_caravans = ordered_scope.paginate(page: params[:page], per_page: 10)
 
     # Apply filters
@@ -27,9 +29,6 @@ class HomeController < ApplicationController
     caravans = caravans.where(adventure: params[:adventure]) if params[:adventure].present?
     caravans = caravans.where(exterior_color: params[:exterior_color]) if params[:exterior_color].present?
     caravans = caravans.where(interior_theme: params[:interior_theme]) if params[:interior_theme].present?
-    if params[:sort_by].present? && ["asc", "desc", "ASC", "DESC"].include?(params[:sort_by])
-      caravans = caravans.order(price: params[:sort_by])
-    end
 
     # Search across multiple fields
     if params[:search].present?

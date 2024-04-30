@@ -18,7 +18,7 @@ resources :shared_experiences do
   resources :comments, only: [:create, :destroy]
 end
 
-  resources :orders, only: [:show, :create, :new]
+  resources :orders, only: [:index, :show, :create, :new]
   resources :account, only: [:show, :update]
   resources :caravans, only: [:show, :index]
   resources :cart_items, only: [:create, :update, :destroy]

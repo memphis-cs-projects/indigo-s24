@@ -1,4 +1,143 @@
-<h1>Orders</h1>
-<p>
-  This is the Orders page.
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .order {
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .order-header {
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+
+    .order-details {
+      padding: 20px;
+    }
+
+    .order-id {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .order-status {
+      color: #000000;s
+;
+    }
+
+    .order-date {
+      font-style: italic;
+      color: #666;
+    }
+
+    .order-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .order-item {
+      margin-bottom: 5px;
+    }
+
+    .order-item a {
+      color: #007bff; /* Link color */
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .order-item a:hover {
+      color: #0056b3; /* Hover color */
+    }
+
+    .order-total {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .no-orders {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+    }
+
+    .delivery-date {
+      color: #28a745; /* Green color for delivery date */
+    }
+
+    .delete-order {
+      color: #dc3545; /* Red color for delete link */
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    .delete-order:hover {
+      text-decoration: underline;
+    }
+
+    .caravan-image {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Orders</h1>
+    <% if @orders.any? %>
+      <% @orders.each do |order| %>
+        <div class="order">
+          <div class="order-header">
+            <span class="order-id">Order ID: <%= order.id %></span> |
+            <span class="order-status"><%= order.status %></span>
+            <% if order.status.include?("delivered in 10 days") %>
+              <span class="delivery-date"></span>
+            <% end %>
+          </div>
+          <div class="order-details">
+            <p class="order-date">Expected Arrival Date: <span class="delivery-date"><%= (order.created_at + 10.days).strftime("%B %d, %Y") %></span></p>
+            <ul class="order-items">
+              <% order.order_items.each do |order_item| %>
+                <li><%= link_to order_item.caravan.name, caravan_path(order_item.caravan) %></li>
+
+              <% end %>
+            </ul>
+            <p class="order-total">Total Price: <%= number_to_currency(order.total_price) %></p>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="no-orders">No orders yet.</p>
+    <% end %>
+  </div>
+</body>
+</html>

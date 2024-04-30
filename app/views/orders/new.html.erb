@@ -2,53 +2,69 @@
 <h1>Checkout</h1>
 
 <%= form_with model: @order, url: orders_path, method: :post do |form| %>
-  <% if @profile.new_record? %>
   <div class="container">
-  <h2 class="mb-4">Shipping Details</h2>
-  <%= form.fields_for :profile, @profile do |profile_form| %>
-    <div class="form-group">
-      <%= profile_form.label :name, class: 'form-label' %>
-      <%= profile_form.text_field :name, class: 'form-control', placeholder: 'Enter your name', required: true %>
-    </div>
-    <div class="form-group">
-      <%= profile_form.label :address, class: 'form-label' %>
-      <%= profile_form.text_field :address, class: 'form-control', placeholder: 'Enter your address', required: true %>
-    </div>
-    <div class="form-group">
-      <%= profile_form.label :email, class: 'form-label' %>
-      <%= profile_form.email_field :email, class: 'form-control', placeholder: 'Enter your email', required: true %>
-    </div>
-    <div class="form-group">
-      <%= profile_form.label :phone_number, class: 'form-label' %>
-      <%= profile_form.telephone_field :phone_number, class: 'form-control', placeholder: 'Enter your phone number', required: true %>
-    </div>
-    <!-- Add additional profile fields as needed -->
-  <% end %>
-</div>
-<% end %>
-
-
-<div class="container mt-4">
-    <h2 class="mb-4">Payment Details</h2>
-    <div class="form-group">
-      <%= form.label :card_number, 'Card Number', class: 'form-label' %>
-      <%= form.text_field :card_number, class: 'form-control', placeholder: '1234 5678 9012 3456', maxlength: 19, pattern: "\\d{4} \\d{4} \\d{4} \\d{4}", required: true %>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <%= form.label :expiry_date, 'Expiry Date', class: 'form-label' %>
-        <%= form.text_field :expiry_date, class: 'form-control', placeholder: 'MM/YY', maxlength: 5, pattern: "\\d{2}/\\d{2}", required: true %>
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="mb-4">Shipping Details</h2>
+        <% if @profile.new_record? %>
+          <%= form.fields_for :profile, @profile do |profile_form| %>
+            <div class="form-group">
+              <%= profile_form.label :name, class: 'form-label' %>
+              <%= profile_form.text_field :name, class: 'form-control', placeholder: 'Enter your name', required: true %>
+            </div>
+            <div class="form-group">
+              <%= profile_form.label :address, class: 'form-label' %>
+              <%= profile_form.text_field :address, class: 'form-control', placeholder: 'Enter your address', required: true %>
+            </div>
+            <div class="form-group">
+              <%= profile_form.label :email, class: 'form-label' %>
+              <%= profile_form.email_field :email, class: 'form-control', placeholder: 'Enter your email', required: true %>
+            </div>
+            <div class="form-group">
+              <%= profile_form.label :phone_number, class: 'form-label' %>
+              <%= profile_form.telephone_field :phone_number, class: 'form-control', placeholder: 'Enter your phone number', required: true %>
+            </div>
+            <!-- Add additional profile fields as needed -->
+          <% end %>
+        <% end %>
       </div>
-      <div class="form-group col-md-6">
-        <%= form.label :cvv, 'CVV', class: 'form-label' %>
-        <%= form.text_field :cvv, class: 'form-control', placeholder: '123', maxlength: 4, pattern: "\\d{3,4}", required: true %>
+      <div class="col-md-6"> <!-- Adjusted alignment -->
+        <div class="container mt-4">
+          <h2 class="mb-4">Payment Details</h2>
+          <div class="form-group">
+            <%= form.label :card_number, 'Card Number', class: 'form-label' %>
+            <%= form.text_field :card_number, class: 'form-control', placeholder: '1234 5678 9012 3456', maxlength: 19, pattern: "\\d{4} \\d{4} \\d{4} \\d{4}", required: true %>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= form.label :expiry_date, 'Expiry Date', class: 'form-label' %>
+              <%= form.text_field :expiry_date, class: 'form-control', placeholder: 'MM/YY', maxlength: 5, pattern: "\\d{2}/\\d{2}", required: true %>
+            </div>
+            <div class="form-group col-md-6">
+              <%= form.label :cvv, 'CVV', class: 'form-label' %>
+              <%= form.text_field :cvv, class: 'form-control', placeholder: '123', maxlength: 4, pattern: "\\d{3,4}", required: true %>
+            </div>
+          </div>
+          <!-- Optionally add a dropdown for card type or other fields -->
+        </div>
       </div>
-    </div>
-    <!-- Optionally add a dropdown for card type or other fields -->
-
-    <div class="text-center mt-4">
-      <%= form.submit "Place Order", class: "btn btn-success btn-lg" %>
-      <%= link_to 'Back', cart_path, class: "btn btn-secondary btn-lg" %>
     </div>
   </div>
- <% end %>
+
+  <div class="text-center mt-4">
+    <%= form.submit "Place Order", class: "btn btn-success btn-lg" %>
+    <%= link_to 'Back', cart_path, class: "btn btn-secondary btn-lg" %>
+  </div>
+<% end %>
+
+<% if @order.errors.any? %>
+  <!-- Display errors -->
+  <div class="alert alert-danger mt-4">
+    <h4 class="alert-heading">Errors</h4>
+    <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

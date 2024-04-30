@@ -17,10 +17,12 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
+# app/models/cart.rb
+
 class Cart < ApplicationRecord
   belongs_to :user
   has_many :cart_items, dependent: :destroy
-  SHIPPING_FEE = 5.99
+  SHIPPING_FEE = 999.99
   TAX_RATE = 3.99
 
   def add_caravan(caravan)
@@ -38,7 +40,7 @@ class Cart < ApplicationRecord
     items_cost = cart_items.sum do |item|
       item.quantity * item.caravan.price
     end
-    items_cost + shipping_fee + taxes
+    items_cost + shipping_fee + taxes + items_cost*0.18
   end
 
   def shipping_fee
