@@ -127,9 +127,8 @@
             <p class="order-date">Expected Arrival Date: <span class="delivery-date"><%= (order.created_at + 10.days).strftime("%B %d, %Y") %></span></p>
             <ul class="order-items">
               <% order.order_items.each do |order_item| %>
-                <li class="order-item">
-                  <a href="<%= caravan_path(order_item.caravan) %>"><%= order_item.caravan.name %></a>
-                </li>
+                <li><%= link_to order_item.caravan.name, caravan_path(order_item.caravan) %></li>
+
               <% end %>
             </ul>
             <p class="order-total">Total Price: <%= number_to_currency(order.total_price) %></p>
