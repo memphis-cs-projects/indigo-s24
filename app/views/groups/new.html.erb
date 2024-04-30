@@ -62,27 +62,27 @@
 
     <%= form_with model: @group, url: groups_path, method: :post,data: { turbo: false} do |form| %>
       <div class="field">
-        
+
         <%= form.text_field :group_name, placeholder: "Enter group name" %>
       </div>
 
       <div class="field">
-        
+
         <%= form.number_field :group_size, placeholder: "Enter group size" %>
       </div>
 
       <div class="field">
-        
+
         <%= form.text_field :adventure_location, placeholder: "Enter adventure location" %>
       </div>
 
       <div class="field">
-        
+
         <%= form.text_area :other_information, placeholder: "Enter other information" %>
       </div>
 
       <div class="actions">
-        <%= form.submit "Create" %>
+        <%= form.submit "Create" , class: 'btn btn-primary' %>
         <%= link_to "Cancel", nomad_connect_path %>
       </div>
     <% end %>

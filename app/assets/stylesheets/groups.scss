@@ -1,0 +1,237 @@
+.group-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .group-card {
+    background-color: rgba(100, 175, 236, 0.8); // White background with 80% opacity
+    border: 1px solid rgba(0, 0, 0, 0.2); // Semi-transparent border
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px; // Adjust as necessary
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px); // Apply a blur effect to the background
+    -webkit-backdrop-filter: blur(10px); // For Safari browser support
+    overflow: hidden; // Ensures nothing spills out of the border radius
+  }
+  
+  .group-card h2 {
+    margin-top: 0;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    color: white;
+  }
+  
+  .btn-view {
+    background-color: #007bff;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    margin-left: 8px; /* Space out buttons */
+  }
+
+  
+  .button-style {
+    background-color: #007bff; /* Replace with the color you want */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px; /* Adjust for desired roundness */
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adjust for desired shadow */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions for hover effects */
+    text-decoration: none; /* If your button is a link */
+    cursor: pointer;
+  }
+  
+  .button-style:hover {
+    background-color: #0056b3; /* A slightly darker shade for the hover state */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* A more pronounced shadow for the hover state */
+  }
+
+  #message-list {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    height: calc(100vh - 120px); /* Adjust the height as needed */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse; /* Newest messages at the bottom */
+  }
+  
+  .message {
+    max-width: 70%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 18px;
+    background-color: #f0f0f0; /* Light grey for messages from others */
+    word-wrap: break-word;
+  }
+  
+  .message.mine {
+    margin-left: auto;
+    background-color: #dcf8c6; /* Light green for user's own messages */
+  }
+  
+  .timestamp {
+    display: block;
+    text-align: right;
+    opacity: 0.6;
+    font-size: 0.75rem;
+    margin-top: 4px;
+  }
+  
+  .message-form {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #eee; /* Slightly different background for the input area */
+  }
+  
+  .message-form textarea {
+    flex-grow: 1;
+    margin-right: 10px;
+    border-radius: 18px;
+    padding: 10px;
+    border: none;
+  }
+  
+  .message-form input[type="submit"] {
+    padding: 10px 20px;
+    border-radius: 18px;
+    border: none;
+    background-color: #4CAF50; /* Material Design Green */
+    color: white;
+    cursor: pointer;
+  }
+
+  .text-field {
+    padding: 10px;
+    border: 2px solid #a4dfa6; /* Light grey border */
+    border-radius: 4px; /* Rounded corners */
+    margin-right: 5px; /* Spacing between the text field and the button */
+    width: calc(100% - 100px); /* Adjust width as needed, minus the width of the button */
+    box-sizing: border-box; /* Makes sure padding doesn't affect the total width */
+  }
+  
+  /* Style for your send button */
+  .send-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745; /* Bootstrap's btn-success color */
+    color: white;
+    border-radius: 4px; /* Match the text field's border-radius */
+    cursor: pointer;
+    transition: background-color 0.2s; /* Smooth transition for hover effect */
+  }
+  
+  /* Hover effect for the send button */
+  .send-button:hover {
+    background-color: #218838; /* A darker shade for the hover state */
+  }
+  
+  /* This wrapper ensures your input and button are on the same line */
+  .form-wrapper {
+    display: flex;
+    justify-content: space-between; /* Adjusts space as needed */
+    align-items: center;
+    gap: 10px; /* Adds some space between the elements */
+  }
+
+  .container {
+    padding: 20px;
+  }
+  
+  /* Row settings */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  
+  /* Card settings */
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: auto; /* This keeps the image aspect ratio */
+  }
+  
+  .card-body {
+    flex: 1; /* This allows the card body to expand and fill the space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distributes space around items */
+  }
+  
+  /* This makes sure that all cards have the same height */
+  .col-md-4 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card.mb-4 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4rem; /* Adjust the margin as you like */
+    height: 100%; /* Sets the card height to fill the column */
+  }
+  
+  /* Buttons settings */
+  .btn-group {
+    margin-top: 20px; /* Adds space between the text and buttons */
+  }
+  
+  /* Ensures buttons have consistent width */
+  
+  /* Last button doesn't have right margin */
+  .btn:last-child {
+    margin-right: 0;
+  }
+  
+  /* Optional: Sets minimum card height for better alignment */
+  .card {
+    min-height: 450px; /* Adjust the minimum height as needed */
+  }
+
+  .btn {
+    text-align: center; /* Center align button text */
+    vertical-align: middle; /* Align text vertically */
+    padding: .375rem .75rem; /* Adjust padding to match your design */
+    font-size: 1rem; /* Adjust font size as needed */
+    line-height: 1.5; /* Standard line height for buttons */
+    border-radius: .25rem; /* Rounded corners for buttons */
+    margin: 0 5px; /* Space between buttons */
+    text-transform: uppercase; /* Optional: uppercase button text */
+  }
+  
+  /* Adjust button width to fill container */
+  .btn-group {
+    width: 100%; /* Button group takes full width of its parent */
+  }
+  
+  /* Flexbox layout for buttons */
+  .btn-group .btn {
+    flex-grow: 1; /* Buttons grow to fill horizontal space */
+    flex-basis: 0; /* Buttons don't base their size on content */
+  }
+  
+  /* Ensure button text doesn't break */
+  .btn {
+    white-space: nowrap; /* Prevents text wrapping in buttons */
+  }

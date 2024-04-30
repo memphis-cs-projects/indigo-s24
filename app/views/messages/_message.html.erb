@@ -1,0 +1,7 @@
+<div class="message">
+  <strong><%= message.user.email %>:</strong> <!-- Adjust this to match the attribute where you store the username -->
+  <%= message.content %>
+  <div class="timestamp">
+    <%= message.created_at.strftime("%Y-%m-%d %H:%M:%S") %> <!-- Format the timestamp as needed -->
+  </div>
+</div>

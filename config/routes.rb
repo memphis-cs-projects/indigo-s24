@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'messages/index'
+  get 'messages/create'
   get 'comments/create'
   get 'comments/destroy'
   root 'home#show'
@@ -32,7 +34,7 @@ end
   # Routes for joining and viewing groups
   # get 'nomad_connect/join', to: 'groups#join_group', as: 'join_group'
   get 'nomad_connect/view_group', to: 'groups#view_group', as: 'view_group'
-  
+
   get 'view_group', to: 'groups#view_group'
   delete 'groups/:id', to: 'groups#destroy', as: 'delete_group'
   get 'join_group/:group_id', to: 'groups#join', as: 'join_group'
@@ -42,7 +44,9 @@ end
 
 
   get 'view_details', to: 'home#index', as: 'details'
-  resources :groups
+  resources :groups do
+    resources :messages, only: [:index, :create]
+  end
   #get 'groups/new', to: 'groups#new', as: 'new_group'
   post 'groups', to: 'groups#create'
 
