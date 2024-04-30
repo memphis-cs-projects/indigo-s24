@@ -17,8 +17,10 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
+# app/models/order.rb
+# app/models/order.rb
 class Order < ApplicationRecord
   belongs_to :user
-  has_one :payment
-  #accepts_nested_attributes_for :profile
+  has_many :order_items
+  has_many :caravans, through: :order_items
 end

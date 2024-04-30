@@ -1,6 +1,8 @@
+# app/controllers/orders_controller.rb
+
 class OrdersController < ApplicationController
   def index
-    # Implement the logic to fetch and display the user's orders
+    @orders = current_user.orders.includes(:caravans)
   end
 
   def new
@@ -11,13 +13,14 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build(order_params)
+    @order.status = "Your order will be delivered in 10 days."
 
     ActiveRecord::Base.transaction do
       @order.total_price = current_cart.total_cost
 
       # Copy the items from the cart to the order
       current_cart.cart_items.each do |cart_item|
-        @order.order_items.build(product: cart_item.product, quantity: cart_item.quantity, price: cart_item.price)
+        @order.order_items.build(caravan: cart_item.caravan, quantity: cart_item.quantity, price: cart_item.price)
       end
 
       if @order.save
@@ -25,7 +28,7 @@ class OrdersController < ApplicationController
         # ...
         current_cart.clear
 
-        redirect_to root_path, notice: 'Thank you for your order.'
+        redirect_to orders_path, notice: 'Thank you for your order.'
       else
         render :new
       end
@@ -36,8 +39,9 @@ class OrdersController < ApplicationController
     render :new
   end
 
-  def order_params
-    params.require(:order).permit(:total_price, :status, profile_attributes: [:name, :address, :email, :phone_number])
-  end
+  private
 
+  def order_params
+    params.require(:order).permit(:status, order_items_attributes: [:caravan_id, :quantity, :price])
+  end
 end
