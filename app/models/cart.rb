@@ -23,12 +23,24 @@ class Cart < ApplicationRecord
   SHIPPING_FEE = 5.99
   TAX_RATE = 3.99
 
-  def add_caravan(caravan)
-    current_item = cart_items.find_by(caravan_id: caravan.id)
+  #def add_caravan(caravan)
+    #current_item = cart_items.find_by(caravan_id: caravan.id)
+    #if current_item
+      #current_item.quantity += 1
+    #else
+      #current_item = cart_items.build(caravan: caravan, quantity: 1)
+    #end
+    #current_item.save if current_item.changed?
+   # current_item
+  #end
+
+  def add_caravan(caravan_id)
+    current_item = cart_items.find_by(caravan_id: caravan_id)
+
     if current_item
       current_item.quantity += 1
     else
-      current_item = cart_items.build(caravan: caravan, quantity: 1)
+      current_item = cart_items.build(caravan_id: caravan_id)
     end
     current_item.save if current_item.changed?
     current_item

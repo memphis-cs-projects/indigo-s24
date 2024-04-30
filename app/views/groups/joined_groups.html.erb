@@ -8,7 +8,7 @@
       <% if joined_group.group.present? %>
       <div class="group-card">
         <h2>Name: <%= joined_group.group.group_name %></h2>
-        <%= link_to 'View', group_path(joined_group), class: 'button-style' %>
+        <%= link_to 'View', group_path(joined_group.group), class: 'button-style' %>
         <%= link_to 'Chat', group_messages_path(joined_group.group),  class: 'button-style'  %>
       </div>
     <% end %>
