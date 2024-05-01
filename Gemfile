@@ -72,7 +72,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'webdrivers'
+  gem 'webdrivers', '= 5.3.0'
 end
 
 #
@@ -96,3 +96,12 @@ gem 'bootstrap_form', '~> 5.2.3'
 
 # Authentication
 gem 'devise'
+
+gem 'image_processing', '~> 1.2'
+gem 'mini_magick'
+
+#gem 'ruby-vips', '~> 2.2.1'
+
+gem 'rubyzip', '~> 2.3.0'
+
+#gem 'webdrivers', '= 5.3.0'

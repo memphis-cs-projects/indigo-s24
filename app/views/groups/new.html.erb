@@ -48,6 +48,7 @@
       background-color: #007bff;
       color: #fff;
       text-decoration: none;
+      margin: 20px;
       cursor: pointer;
     }
     .create-group-form .actions button:hover,
@@ -83,7 +84,7 @@
 
       <div class="actions">
         <%= form.submit "Create" , class: 'btn btn-primary' %>
-        <%= link_to "Cancel", nomad_connect_path %>
+        <%= link_to "Cancel", nomad_connect_path, class: 'btn btn-primary' %>
       </div>
     <% end %>
   </div>
