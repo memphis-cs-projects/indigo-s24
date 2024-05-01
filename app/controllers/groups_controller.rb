@@ -59,13 +59,18 @@ class GroupsController < ApplicationController
 
   def join
     group = Group.find(params[:group_id])
-    join_group = JoinedGroup.new(user: current_user, group: group) # Use JoinedGroup instead of JoinGroup
+    #join_group = JoinedGroup.new(user: current_user, group: group) # Use JoinedGroup instead of JoinGroup
+    if JoinedGroup.exists?(user: current_user, group: group)
+      redirect_to groups_path, alert: "You are already a member of this group."
+    else
+      join_group = JoinedGroup.new(user: current_user, group: group)
     if join_group.save
       redirect_to joined_groups_path, notice: "Successfully joined the group."
     else
       redirect_to join_group_path, alert: "Failed to join the group."
     end
   end
+end
 
   def joined_groups
     @joined_groups = current_user.joined_groups.includes(:group)
