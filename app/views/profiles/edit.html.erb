@@ -1,0 +1,16 @@
+<!-- app/views/profiles/edit.html.erb -->
+<h1>Edit Profile</h1>
+<%= form_with(model: @profile, url: profile_path(@profile), method: :patch) do |form| %>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email, value: current_user.email, readonly: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <!-- Add fields for other attributes like phone_number, address, etc. -->
+
+  <%= form.submit "Update Profile" %>
+<% end %>
