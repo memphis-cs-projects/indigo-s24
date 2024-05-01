@@ -12,8 +12,13 @@ class Admin::AdminController < ApplicationController
     end
 
     def view_orders
-      # View orders logic
+      @orders = Order.all.order(created_at: :desc)
+
     end
+
+      def order_params
+        params.require(:order).permit(:status, order_items_attributes: [:caravan_id, :quantity, :price])
+      end
 
     private
 

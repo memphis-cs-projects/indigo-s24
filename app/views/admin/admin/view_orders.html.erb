@@ -1,2 +1,24 @@
 <h1>View Orders</h1>
 <!-- Your view orders content here -->
+<table class="table">
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Customer Name</th>
+      <th>Total</th>
+      <th>Ordered On</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.user.email %></td> <!-- Adjust according to your user association -->
+        <td><%= number_to_currency(order.total_price) %></td>
+        <td><%= Time.now.strftime("%d %b %Y") %></td>
+        <td><%= order.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
