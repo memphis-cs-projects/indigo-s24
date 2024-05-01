@@ -45,8 +45,9 @@
 </head>
 <body>
     <ul>
-        <li><a class="profile-link" href="<%= new_profile_path %>">Profile Details</a></li>
-        <li><a class="payment-link" href="<%= new_payment_path %>">Payment Details</a></li>
+    <!-- Add a link to edit profile details -->
+    <li><%= link_to 'Edit Profile Details', edit_profile_path(current_user.profile), class: "button" %></li>
+
     </ul>
 </body>
 </html>
