@@ -1,16 +1,79 @@
-<!-- app/views/profiles/edit.html.erb -->
-<h1>Edit Profile</h1>
-<%= form_with(model: @profile, url: profile_path(@profile), method: :patch) do |form| %>
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.email_field :email, value: current_user.email, readonly: true %>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-  <!-- Add fields for other attributes like phone_number, address, etc. -->
+        h1 {
+            color: #333;
+        }
 
-  <%= form.submit "Update Profile" %>
-<% end %>
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Profile</h1>
+    <%= form_with(model: @profile, url: profile_update_path, method: :patch) do |form| %>
+        <label for="email">Email:</label>
+        <%= form.text_field :email, id: "email", value: @profile.user.email %><br><br>
+
+        <label for="name">Name:</label>
+        <%= form.text_field :name, id: "name" %><br><br>
+
+        <label for="phone">Phone number:</label>
+        <%= form.text_field :phone_number, id: "phone" %><br><br>
+
+        <label for="address">Address:</label>
+        <%= form.text_field :address, id: "address" %><br><br>
+
+        <%= form.submit "Update Profile" %>
+    <% end %>
+
+    <%= link_to 'Back', settings_path, class: "button back-button" %>
+</body>
+</html>
