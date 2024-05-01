@@ -1,27 +1,26 @@
 class PaymentsController < ApplicationController
-  def index
-    @payments = Payment.all
+  before_action :authenticate_user!
+  before_action :set_payment, only: [:edit, :update]
+
+  def edit
+    # Renders the edit form
   end
 
-  def new
-    @payment = Payment.new
-    render :new
-  end
-
-  def create
-    @payment = Payment.new(payment_params)
-    if @payment.save
-      redirect_to settings_path, notice: 'Successfully added'
+  def update
+    if @payment.update(payment_params)
+      flash[:success] = "Payment details updated successfully"
+      redirect_to settings_path
     else
-      render :new
+      flash[:error] = "Failed to update payment details"
+      render :edit
     end
   end
 
-  def show
-    @payment = Payment.find(params[:id])
-  end
-
   private
+
+  def set_payment
+    @payment = current_user.payment || current_user.build_payment
+  end
 
   def payment_params
     params.require(:payment).permit(:card_number, :cvv, :expiry_date)

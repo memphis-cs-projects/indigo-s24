@@ -22,11 +22,11 @@ end
   resources :account, only: [:show, :update]
   resources :caravans, only: [:show, :index]
   resources :cart_items, only: [:create, :update, :destroy]
-  resources :payments
   get 'settings', to: 'settings#index', as: 'settings'
   get 'profiles/edit', to: 'profiles#edit', as: 'edit_profile'
   patch 'profiles/update', to: 'profiles#update', as: 'profile_update'
-  post 'payments', to: 'payments#create'
+  get 'payments/edit', to: 'payments#edit', as: 'edit_payment'
+  patch 'payments/update', to: 'payments#update', as: 'payment_update'
   get 'orders', to: 'orders#index'
   get 'nomad_connect', to: 'nomad_connect#index'
   get 'shared_experiences', to: 'shared_experiences#index'
